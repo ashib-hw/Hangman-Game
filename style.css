@@ -1,0 +1,154 @@
+body {
+  /* background: linear-gradient(to right, #1c1c1c, #383838); */
+  background: linear-gradient(to right, #ff416c, #0072ff);
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+h1.gradient {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.gradient{
+    background: linear-gradient(to right, #EBE389, #A55B4B, #1E5F74, #9BC09C, #DBD8E3, #4F1C51, #EBE389);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 4.5s linear infinite;
+}
+@keyframes animate-gradient{
+    to{
+        background-position: 200%;
+    }
+}
+
+.game-layout {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+#hangman {
+  width: 300px;
+  height: 400px;
+}
+
+#word-container {
+  font-size: 2.5rem;
+  letter-spacing: 15px;
+  margin: 20px 0;
+  font-weight: 700;
+}
+
+#keyboard button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #4D4646, #E7E7DE, #4D4646);
+  transition: transform 0.2s ease;
+}
+#keyboard button:hover{
+  transform: scale(1.10);
+  background-image: linear-gradient(to right, #EBE389, #DBD8E3,  #EBE389);
+}
+
+.win-text {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+#play-again-btn {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  transition: background 0.3s;
+  transition: transform 0.3s ease;
+  color: #FFF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+}
+#play-again-btn:hover {
+  transform: scale(1.05);
+}
+#play-again-btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+#play-again-btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/* hover */
+#play-again-btn:hover::before {
+  opacity: 1;
+}
+
+#play-again-btn:active:after {
+  background: transparent;
+}
+
+#play-again-btn:active {
+  color: #000;
+  font-weight: bold;
+}
+
+#hint, #category {
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+/* 🔁 Swing Animation on Lose */
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.swing {
+  animation: swing 0.8s ease-in-out infinite;
+  transform-origin: top center;
+}
